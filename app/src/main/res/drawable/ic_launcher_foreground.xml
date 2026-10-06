@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Golden radiant crescent moon -->
+    <path
+        android:pathData="M54,26 C68,26 79,37 79,51 C79,64 69,75 56,76 C53,76.2 50,75.8 48,75 C57,71 63,62 63,51 C63,40 57,31 48,27 C50,26.3 52,26 54,26 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="48"
+                android:startY="26"
+                android:endX="79"
+                android:endY="76"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFF2B2" />
+                <item android:offset="0.6" android:color="#E5C158" />
+                <item android:offset="1.0" android:color="#C29724" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Eight-pointed Islamic Star -->
+    <path
+        android:pathData="M44,40 L46,45 L51,44 L48,48 L51,52 L46,51 L44,56 L42,51 L37,52 L40,48 L37,44 L42,45 Z"
+        android:fillColor="#FFF6CE" />
+    <!-- Open Book / Quran base motif -->
+    <path
+        android:pathData="M32,68 C40,65 48,67 54,71 C60,67 68,65 76,68 C76,73 68,70 54,76 C40,70 32,73 32,68 Z"
+        android:fillColor="#E5C158" />
+    <path
+        android:pathData="M33,71 C41,68 49,70 54,74 C59,70 67,68 75,71 C74,75 66,73 54,78 C42,73 34,75 33,71 Z"
+        android:fillColor="#FFFFFF" />
+</vector>

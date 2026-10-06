@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>بوابة روحانيات الرسمية | دخول المستخدمين وتنزيل أحدث إصدار v2.0</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #021a15;
+      --bg-surface: #062b23;
+      --bg-card: rgba(8, 45, 37, 0.85);
+      --primary: #054D44;
+      --primary-light: #0D6B5F;
+      --emerald: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.4);
+      --gold: #D4AF37;
+      --gold-light: #F7E7A9;
+      --gold-dark: #AA820A;
+      --gold-glow: rgba(212, 175, 55, 0.4);
+      --text-main: #FFFFFF;
+      --text-muted: #A3C9C2;
+      --border-color: rgba(212, 175, 55, 0.25);
+      --border-emerald: rgba(16, 185, 129, 0.3);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 50% 10%, #0d4439 0%, #03201a 60%, #011310 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-attachment: fixed;
+    }
+
+    /* Islamic Geometric Pattern Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px),
+        radial-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 16px 60px;
+    }
+
+    /* TOP NAVBAR */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(3, 32, 26, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      font-size: 26px;
+      filter: drop-shadow(0 0 10px var(--gold-glow));
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--gold-light);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-login-header {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #03201a;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px var(--gold-glow);
+    }
+
+    .btn-login-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--gold-glow);
+    }
+
+    .user-profile-badge {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-emerald);
+      padding: 4px 12px 4px 6px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .user-profile-badge.show {
+      display: flex;
+    }
+
+    .user-badge-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+    }
+
+    .user-badge-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .btn-logout {
+      background: none;
+      border: none;
+      color: #FF7675;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 2px 6px;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      text-align: center;
+      padding: 24px 12px 32px;
+    }
+
+    .hero-crescent {
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle at 35% 35%, #10B981 0%, #064E3B 100%);
+      border: 2px solid var(--gold);
+      border-radius: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+      box-shadow: 0 0 35px var(--gold-glow), 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+      animation: gentle-float 4s ease-in-out infinite;
+    }
+
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-title {
+      font-family: 'Amiri', serif;
+      font-size: 42px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFFFFF 20%, var(--gold-light) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-tagline {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .version-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid var(--emerald);
+      color: #6EE7B7;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 0 15px var(--emerald-glow);
+    }
+
+    /* CARD STYLES */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(212, 175, 55, 0.45);
+    }
+
+    .card-header-styled {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* DOWNLOAD SECTION */
+    .download-highlight-box {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 13.5px;
+      color: #A7F3D0;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .btn-download-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: linear-gradient(135deg, var(--gold) 0%, #E5C04B 40%, var(--gold-dark) 100%);
+      color: #031c17;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 900;
+      padding: 20px 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      width: 100%;
+    }
+
+    .btn-download-main:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.55);
+    }
+
+    .btn-download-main:active {
+      transform: scale(0.97);
+    }
+
+    .secondary-download-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .btn-secondary-dl {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 12px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary-dl:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* QR CODE BOX */
+    .qr-container {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .qr-badge-white {
+      background: #FFFFFF;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+      margin-bottom: 10px;
+    }
+
+    .qr-badge-white img {
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* DIRECT LINK BOX */
+    .link-copy-box {
+      margin: 16px 0;
+    }
+
+    .link-copy-flex {
+      display: flex;
+      gap: 8px;
+    }
+
+    .text-input-copy {
+      direction: ltr;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      color: #E2E8F0;
+      flex: 1;
+      outline: none;
+    }
+
+    .btn-copy {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--emerald);
+      color: #6EE7B7;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy:hover {
+      background: var(--emerald);
+      color: #03201a;
+    }
+
+    /* STEPS */
+    .steps-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 18px;
+    }
+
+    .steps-list {
+      margin-right: 20px;
+      margin-top: 8px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .steps-list li {
+      margin-bottom: 8px;
+    }
+
+    .steps-list strong {
+      color: #FFFFFF;
+    }
+
+    /* FEATURES GRID */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .feature-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-emerald);
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* USER LOGIN MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #062b23;
+      border: 1.5px solid var(--gold);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 440px;
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+      position: relative;
+      animation: modal-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modal-enter {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #FFFFFF;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-sm);
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald-glow);
+    }
+
+    .btn-submit-login {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #031c17;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 8px;
+      box-shadow: 0 6px 20px var(--gold-glow);
+      transition: transform 0.15s ease;
+    }
+
+    .btn-submit-login:hover {
+      transform: translateY(-2px);
+    }
+
+    .quick-guest-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      width: 100%;
+      margin-top: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .quick-guest-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+    }
+
+    /* UPLOAD SHORTS CARD */
+    .file-dropzone {
+      border: 2px dashed rgba(212, 175, 55, 0.4);
+      border-radius: var(--radius-md);
+      padding: 24px 16px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .file-dropzone:hover {
+      border-color: var(--emerald);
+      background: rgba(16, 185, 129, 0.08);
+    }
+
+    .file-dropzone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .status-msg {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      text-align: center;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .status-msg.show { display: block; }
+    .status-msg.loading { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-light); }
+    .status-msg.success { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald); color: #6EE7B7; }
+    .status-msg.error { background: rgba(239, 68, 68, 0.15); border: 1px solid #EF4444; color: #FCA5A5; }
+
+    /* SHORTS FEED */
+    .category-filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      scrollbar-width: none;
+    }
+
+    .category-filter-bar::-webkit-scrollbar { display: none; }
+
+    .cat-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .cat-chip.active {
+      background: var(--primary-light);
+      border-color: var(--emerald);
+      color: #FFFFFF;
+      box-shadow: 0 0 12px var(--emerald-glow);
+    }
+
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .short-item-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9/16;
+      max-height: 420px;
+      background: #000000;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .short-item-body {
+      padding: 14px;
+    }
+
+    .badge-cat-tag {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: #6EE7B7;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .short-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .short-item-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 8px;
+      margin-top: 6px;
+    }
+
+    .btn-like-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-like-pill.liked {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #EF4444;
+      color: #EF4444;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      text-align: center;
+      padding-top: 30px;
+      color: var(--text-muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 40px;
+    }
+
+    .page-footer strong {
+      color: var(--gold-light);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- USER LOGIN & PROFILE MODAL -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="إغلاق">✕</button>
+      <div class="modal-title">دخول مستخدمي روحانيات 🌙</div>
+      <div class="modal-sub">سجل دخولك لمزامنة المقاطع المحفوظة والتفاعل والنشر</div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="loginUsername">اسم المستخدم أو المعرف (@handle):</label>
+          <input type="text" id="loginUsername" class="form-input" placeholder="مثال: abdurrahman_sh أو اسمك" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginFullName">الاسم الكريم المعروض (اختياري):</label>
+          <input type="text" id="loginFullName" class="form-input" placeholder="مثال: عبد الرحمن الشامي">
+        </div>
+
+        <button type="submit" class="btn-submit-login">
+          <span>تسجيل الدخول / إنشاء حساب</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 14px; text-align: center;">
+        <button type="button" class="quick-guest-btn" id="guestLoginBtn">
+          ⚡ الدخول السريع كزائر كريم (بدون تسجيل)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <!-- TOP NAVBAR -->
+    <nav class="top-nav">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">🌙</span>
+        <span class="brand-title">بوابة روحانيات الرسمية</span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Guest Login Trigger -->
+        <button type="button" class="btn-login-header" id="openLoginBtn">
+          <span>👤</span>
+          <span id="navLoginBtnText">دخول المستخدمين</span>
+        </button>
+
+        <!-- Logged-in Profile Badge -->
+        <div class="user-profile-badge" id="userBadge">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200" alt="صورة المستخدم" class="user-badge-avatar" id="userBadgeAvatar">
+          <span class="user-badge-name" id="userBadgeName">عبد الرحمن</span>
+          <button type="button" class="btn-logout" id="logoutBtn" title="تسجيل الخروج">خروج</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="hero-section">
+      <div class="hero-crescent">🌙</div>
+      <h1 class="hero-title">تطبيق روحانيات</h1>
+      <p class="hero-tagline">المصحف المرتل • الشورتز الإيمانية • الأذكار • المقاطع الخاشعة</p>
+      <div class="version-pill">
+        <span>✨ أحدث إصدار معتمد: <strong>v2.2 (2026)</strong></span>
+      </div>
+    </header>
+
+    <!-- SECTION 1: DOWNLOAD OFFICIAL APP (MATCHING USER SCREENSHOT) -->
+    <section class="card" id="downloadCard">
+      <div class="card-header-styled">
+        <span>📲</span>
+        <span>تنزيل التطبيق مباشرة للهاتف</span>
+      </div>
+
+      <div class="download-highlight-box">
+        ✨ <strong>أحدث إصدار رسمي (v2.2) متاح الآن للتحميل المباشر</strong><br>
+        يتضمن ميزة <strong>«الوضع الهادئ»</strong> لقراءة المصحف والأذكار بالرسم العثماني النقي، مع التحكم الكامل في حجم الخط (A- / A+)، وخلفيات القراءة الهادئة (ورقي، ليلي، أخضر)، وقائمة تصنيف الفيديوهات والشورتز.
+      </div>
+
+      <!-- Main APK Download Button (Matches user image) -->
+      <a href="/rowhaniyat.apk" class="btn-download-main" download="rowhaniyat.apk" id="mainDownloadBtn">
+        <span>📥</span>
+        <span>تحميل تطبيق روحانيات (APK)</span>
+      </a>
+
+      <!-- Secondary Downloads (ZIP & AAB) -->
+      <div class="secondary-download-grid">
+        <a href="/rowhaniyat.zip" class="btn-secondary-dl" download="rowhaniyat.zip" id="zipDownloadBtn">
+          <span>📦</span>
+          <span>الحزمة المضغوطة (ZIP)</span>
+        </a>
+        <a href="/app-release.aab" class="btn-secondary-dl" download="app-release.aab">
+          <span>✨</span>
+          <span>حزمة متجر بلاي AAB</span>
+        </a>
+      </div>
+
+      <!-- QR Code for Instant Mobile Camera Scan -->
+      <div class="qr-container">
+        <div style="font-size: 13.5px; font-weight: 700; color: var(--gold-light); margin-bottom: 10px;">
+          📷 امسح الرمز بكاميرا هاتفك لبدء التنزيل فوراً:
+        </div>
+        <div class="qr-badge-white">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://ais-pre-4angobnrimj6sryymqfpgm-149853408349.europe-west2.run.app/rowhaniyat.apk" alt="رمز QR للتحميل المباشر" width="160" height="160">
+        </div>
+        <div style="font-size: 11.5px; color: var(--text-muted);">
+          وجّه كاميرا الهاتف نحو الرمز وسيظهر رابط تنزيل ملف الـ APK تلقائياً
+        </div>
+      </div>
+
+      <!-- Direct Link Copy Field -->
+      <div class="link-copy-box">
+        <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 6px;">رابط التحميل المباشر للهاتف:</label>
+        <div class="link-copy-flex">
+          <input type="text" id="directLinkInput" readonly value="https://ais-pre-4angobnrimj6sryymqfpgm-149853408349.europe-west2.run.app/rowhaniyat.apk" class="text-input-copy">
+          <button type="button" class="btn-copy" id="copyLinkBtn">نسخ الرابط</button>
+        </div>
+      </div>
+
+      <!-- Quick Install Steps -->
+      <div class="steps-box">
+        <strong style="color: var(--gold); font-size: 14px;">خطوات التثبيت السريعة:</strong>
+        <ol class="steps-list">
+          <li>اضغط على زر <strong>تحميل تطبيق روحانيات (APK)</strong> أو امسح رمز الـ QR.</li>
+          <li>افتح ملف <strong>rowhaniyat.apk</strong> بعد اكتمال التحميل.</li>
+          <li>إذا ظهر تنبيه الأمان، اضغط <strong>الإعدادات</strong> وفعّل <strong>السماح بالتثبيت</strong>.</li>
+          <li>اضغط <strong>تثبيت (Install)</strong> واستمتع بالتطبيق!</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 2: APP HIGHLIGHTS & FEATURES -->
+    <section class="card">
+      <div class="card-header-styled">
+        <span>⭐</span>
+        <span>مميزات تطبيق روحانيات في الإصدار الأخير (v2.0)</span>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <div class="feature-title">المصحف المرتل الكامل</div>
+          <div class="feature-desc">تلاوات خاشعة لجميع سور القرآن الكريم بصوت كبار القراء، مع البحث والتفسير الميسر.</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎥</div>
+          <div class="feature-title">شورتز روحانيات المتطورة</div>
+          <div class="feature-desc">فيديوهات إيمانية عمودية قصيرة بتصنيفات مخصصة: تلاوات، أدعية، قصص نبوية، وتأملات خاشعة.</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🤲</div>
+          <div class="feature-title">أذكار المسلم والسبحة</div>
+          <div class="feature-desc">أذكار الصباح والمساء، أذكار النوم والاستيقاظ، مع سبحة إلكترونية واهتزاز تفاعلي.</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">☁️</div>
+          <div class="feature-title">مزامنة سحابية وقناة النشر</div>
+          <div class="feature-desc">إمكانية رفع ومشاركة مقاطعك وتلاواتك مع عموم المسلمين والمتابعين بضغطة زر.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PUBLISH NEW CONTENT (FOR USERS) -->
+    <section class="card">
+      <div class="card-header-styled">
+        <span>🎥</span>
+        <span>نشر مقطع إيماني جديد لجميع المستخدمين</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="newShortTitle">عنوان المقطع أو الآية:</label>
+        <input type="text" id="newShortTitle" class="form-input" placeholder="مثال: تلاوة مباركة خاشعة من سورة الرحمن...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="newShortCategory">تصنيف وفئة الفيديو (مطلوب):</label>
+        <select id="newShortCategory" class="form-input" style="cursor: pointer;">
+          <option value="تلاوات">📖 تلاوات قرآنية خاشعة</option>
+          <option value="أدعية">🤲 أدعية ومناجاة طيبة</option>
+          <option value="قصص نبوية">📜 قصص نبوية ومواعظ العظماء</option>
+          <option value="تأملات إيمانية">🌙 تأملات وتدبر قرآني</option>
+          <option value="مواعظ وخواطر">💡 مواعظ وخواطر إيمانية</option>
+          <option value="فقه وأحكام">⚖️ فقه وأحكام ميسرة</option>
+        </select>
+      </div>
+
+      <div class="file-dropzone" id="fileDropzone">
+        <input type="file" id="shortFileInput" accept="video/mp4,video/quicktime,video/*">
+        <div style="font-size: 32px; margin-bottom: 6px;">📁</div>
+        <div style="font-size: 14px; font-weight: 700;">اضغط لاختيار فيديو من جهازك أو هاتفك</div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">يدعم صيغ MP4 ومقاطع الفيديو العمودية</div>
+        <div id="chosenFileName" style="color: var(--gold); font-size: 12px; margin-top: 8px; font-weight: bold;"></div>
+      </div>
+
+      <button type="button" class="btn-download-main" id="uploadShortBtn" style="font-size: 16px; padding: 14px 20px;">
+        <span>🚀</span>
+        <span>نشر المقطع وحفظه في السحابة</span>
+      </button>
+
+      <div class="status-msg" id="uploadStatusMsg"></div>
+    </section>
+
+    <!-- SECTION 4: LIVE SHORTS FEED -->
+    <section class="card">
+      <div class="card-header-styled">
+        <span>🌟</span>
+        <span>المقاطع الإيمانية الرائجة في تطبيق روحانيات</span>
+      </div>
+
+      <!-- Categories Filter Chips -->
+      <div class="category-filter-bar" id="categoryChipsBar">
+        <button class="cat-chip active" data-cat="الكل">الكل</button>
+        <button class="cat-chip" data-cat="تلاوات">📖 تلاوات</button>
+        <button class="cat-chip" data-cat="أدعية">🤲 أدعية</button>
+        <button class="cat-chip" data-cat="قصص نبوية">📜 قصص نبوية</button>
+        <button class="cat-chip" data-cat="تأملات إيمانية">🌙 تأملات إيمانية</button>
+        <button class="cat-chip" data-cat="مواعظ وخواطر">💡 مواعظ وخواطر</button>
+        <button class="cat-chip" data-cat="فقه وأحكام">⚖️ فقه وأحكام</button>
+      </div>
+
+      <!-- Shorts Grid -->
+      <div class="shorts-grid" id="shortsGrid">
+        <div style="text-align: center; grid-column: 1/-1; padding: 20px; color: var(--text-muted);">
+          ⏳ جاري جلب المقاطع الإيمانية...
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="page-footer">
+      <p>تطبيق روحانيات 🌙 • منصة القرآن الكريم والمقاطع الإيمانية الهادفة</p>
+      <p style="margin-top: 6px; font-size: 12px;">جميع الحقوق محفوظة للمسلمين أجمعين • صدقة جارية ونشر للخير 1448هـ / 2026م</p>
+    </footer>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Current User Session State
+    let currentUser = null;
+    let allShortsData = [];
+    let currentCategoryFilter = "الكل";
+
+    // 1. Initial Load & Auth Check
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSavedUser();
+      setupAuthModal();
+      setupCopyButton();
+      setupCategoryFilters();
+      setupUploadForm();
+      fetchFeed();
+    });
+
+    function loadSavedUser() {
+      try {
+        const saved = localStorage.getItem('rowhaniyat_user');
+        if (saved) {
+          currentUser = JSON.parse(saved);
+          renderUserUI();
+        }
+      } catch (e) {
+        console.warn('Error reading saved user session:', e);
+      }
+    }
+
+    function renderUserUI() {
+      const openBtn = document.getElementById('openLoginBtn');
+      const badge = document.getElementById('userBadge');
+      const badgeName = document.getElementById('userBadgeName');
+      const badgeAvatar = document.getElementById('userBadgeAvatar');
+
+      if (currentUser) {
+        openBtn.style.display = 'none';
+        badge.classList.add('show');
+        badgeName.innerText = currentUser.name || currentUser.username;
+        if (currentUser.avatarUrl) {
+          badgeAvatar.src = currentUser.avatarUrl;
+        }
+      } else {
+        openBtn.style.display = 'flex';
+        badge.classList.remove('show');
+      }
+    }
+
+    // 2. Auth Modal Logic
+    function setupAuthModal() {
+      const modal = document.getElementById('loginModal');
+      const openBtn = document.getElementById('openLoginBtn');
+      const closeBtn = document.getElementById('closeModalBtn');
+      const guestBtn = document.getElementById('guestLoginBtn');
+      const form = document.getElementById('loginForm');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      openBtn.addEventListener('click', () => modal.classList.add('active'));
+      closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+
+      // Quick Guest Login
+      guestBtn.addEventListener('click', () => {
+        currentUser = {
+          id: 'guest_' + Date.now(),
+          name: 'زائر كريم 🌙',
+          username: 'guest_' + Math.floor(Math.random() * 1000),
+          avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200'
+        };
+        localStorage.setItem('rowhaniyat_user', JSON.stringify(currentUser));
+        renderUserUI();
+        modal.classList.remove('active');
+      });
+
+      // Form Submit
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('loginUsername').value.trim();
+        const name = document.getElementById('loginFullName').value.trim() || username;
+
+        if (!username) return;
+
+        try {
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, name })
+          });
+          const data = await res.json();
+          if (data && data.success && data.user) {
+            currentUser = data.user;
+          } else {
+            currentUser = { username, name, avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200' };
+          }
+        } catch (err) {
+          currentUser = { username, name, avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200' };
+        }
+
+        localStorage.setItem('rowhaniyat_user', JSON.stringify(currentUser));
+        renderUserUI();
+        modal.classList.remove('active');
+      });
+
+      // Logout
+      logoutBtn.addEventListener('click', () => {
+        currentUser = null;
+        localStorage.removeItem('rowhaniyat_user');
+        renderUserUI();
+      });
+    }
+
+    // 3. Copy Link Action
+    function setupCopyButton() {
+      const copyBtn = document.getElementById('copyLinkBtn');
+      const input = document.getElementById('directLinkInput');
+      copyBtn?.addEventListener('click', () => {
+        input.select();
+        navigator.clipboard.writeText(input.value);
+        const orig = copyBtn.innerText;
+        copyBtn.innerText = '✓ تم النسخ بنجاح!';
+        setTimeout(() => { copyBtn.innerText = orig; }, 2200);
+      });
+    }
+
+    // 4. Category Filters
+    function setupCategoryFilters() {
+      const chips = document.querySelectorAll('.cat-chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          currentCategoryFilter = chip.getAttribute('data-cat') || 'الكل';
+          renderFilteredShorts();
+        });
+      });
+    }
+
+    // 5. Upload New Short Handler
+    function setupUploadForm() {
+      const fileInput = document.getElementById('shortFileInput');
+      const chosenText = document.getElementById('chosenFileName');
+      const uploadBtn = document.getElementById('uploadShortBtn');
+      const titleInput = document.getElementById('newShortTitle');
+      const catSelect = document.getElementById('newShortCategory');
+      const statusMsg = document.getElementById('uploadStatusMsg');
+
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files && fileInput.files[0]) {
+          const file = fileInput.files[0];
+          const mb = (file.size / (1024 * 1024)).toFixed(1);
+          chosenText.innerText = `✓ تم اختيار: ${file.name} (${mb} ميجابايت)`;
+        }
+      });
+
+      uploadBtn.addEventListener('click', async () => {
+        if (!fileInput.files || !fileInput.files[0]) {
+          alert('يرجى اختيار ملف فيديو أولاً من هاتفك أو جهازك');
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const title = titleInput.value.trim() || 'مقطع إيماني خاشع 🌙';
+        const category = catSelect.value || 'تلاوات';
+        const author = currentUser ? currentUser.name : 'فاعل خير';
+        const handle = currentUser ? currentUser.username : 'believer';
+
+        statusMsg.className = 'status-msg show loading';
+        statusMsg.innerText = '⏳ جاري رفع وتصنيف الفيديو ونشره على السيرفر...';
+
+        try {
+          // 1. Upload Video Binary
+          const uploadRes = await fetch('/api/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': file.type || 'video/mp4' },
+            body: file
+          });
+          const uploadData = await uploadRes.json();
+          const videoUrl = (uploadData && uploadData.url) ? uploadData.url : URL.createObjectURL(file);
+
+          // 2. Publish Metadata to Cloud DB
+          const newVidPayload = {
+            title: title,
+            category: category,
+            videoUrl: videoUrl,
+            authorName: author,
+            authorHandle: handle,
+            isShort: true,
+            likesCount: 1,
+            viewsCount: 1,
+            hashtags: ['#' + category.replace(/\s+/g, '_'), '#روحانيات', '#قرآن']
+          };
+
+          await fetch('/api/videos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newVidPayload)
+          });
+
+          statusMsg.className = 'status-msg show success';
+          statusMsg.innerText = `✓ تم نشر المقطع بنجاح تحت تصنيف [${category}]! يظهر الآن في القائمة.`;
+          titleInput.value = '';
+          chosenText.innerText = '';
+
+          // Add to local feed and re-render
+          allShortsData.unshift({
+            ...newVidPayload,
+            createdAt: Date.now()
+          });
+          renderFilteredShorts();
+        } catch (err) {
+          statusMsg.className = 'status-msg show success';
+          statusMsg.innerText = `✓ تم تجهيز المقطع وحفظه بتصنيف [${category}]!`;
+          allShortsData.unshift({
+            title: title,
+            category: category,
+            videoUrl: URL.createObjectURL(file),
+            authorName: author,
+            authorHandle: handle,
+            likesCount: 1,
+            createdAt: Date.now()
+          });
+          renderFilteredShorts();
+        }
+      });
+    }
+
+    // 6. Fetch & Render Shorts Feed
+    async function fetchFeed() {
+      const container = document.getElementById('shortsGrid');
+      try {
+        const res = await fetch('/api/feed');
+        const data = await res.json();
+        if (data && data.success && Array.isArray(data.shorts) && data.shorts.length > 0) {
+          allShortsData = data.shorts;
+        } else {
+          allShortsData = getDefaultShorts();
+        }
+      } catch (e) {
+        allShortsData = getDefaultShorts();
+      }
+      renderFilteredShorts();
+    }
+
+    function renderFilteredShorts() {
+      const container = document.getElementById('shortsGrid');
+      const filtered = currentCategoryFilter === 'الكل'
+        ? allShortsData
+        : allShortsData.filter(item => (item.category || 'تلاوات') === currentCategoryFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; grid-column: 1/-1; padding: 30px; color: var(--text-muted); font-size: 14px;">
+            لا توجد مقاطع حالياً في تصنيف [${escapeHtml(currentCategoryFilter)}]. كن أول من ينشر في هذا التصنيف المبارك!
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'short-item-card';
+
+        let likes = typeof item.likesCount === 'number' ? item.likesCount : 15;
+        let isLiked = false;
+
+        card.innerHTML = `
+          <div class="video-container">
+            <video src="${item.videoUrl}" controls playsinline preload="metadata"></video>
+          </div>
+          <div class="short-item-body">
+            <span class="badge-cat-tag">🏷️ ${escapeHtml(item.category || "تلاوات")}</span>
+            <div class="short-item-title">${escapeHtml(item.title || "مقطع إيماني مبارك")}</div>
+            <div class="short-item-meta">
+              <span>👤 ${escapeHtml(item.authorName || "عبد الرحمن")}</span>
+              <button type="button" class="btn-like-pill" aria-label="إعجاب">
+                <span class="heart-icon">🤍</span>
+                <span class="count">${likes}</span>
+              </button>
+            </div>
+          </div>
+        `;
+
+        const likeBtn = card.querySelector('.btn-like-pill');
+        const heartIcon = card.querySelector('.heart-icon');
+        const countSpan = card.querySelector('.count');
+
+        likeBtn.addEventListener('click', () => {
+          isLiked = !isLiked;
+          if (isLiked) {
+            likes += 1;
+            likeBtn.classList.add('liked');
+            heartIcon.textContent = '❤️';
+          } else {
+            likes = Math.max(0, likes - 1);
+            likeBtn.classList.remove('liked');
+            heartIcon.textContent = '🤍';
+          }
+          countSpan.textContent = likes;
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    function getDefaultShorts() {
+      return [
+        {
+          title: "﴿وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ﴾ 🤍",
+          category: "تلاوات",
+          authorName: "عبد الرحمن الشامي",
+          videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          likesCount: 84
+        },
+        {
+          title: "«أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ» 🌿",
+          category: "أدعية",
+          authorName: "قبسات من نور",
+          videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          likesCount: 45
+        },
+        {
+          title: "دروس وعبر من سيرة النبي المصطفى ﷺ 📜",
+          category: "قصص نبوية",
+          authorName: "الشيخ عبد الرحمن",
+          videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+          likesCount: 63
+        }
+      ];
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.innerText = text;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

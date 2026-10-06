@@ -1,0 +1,6 @@
+{
+  "name": "روحانيات",
+  "description": "تطبيق إسلامي اجتماعي متكامل يجمع بين القرآن الكريم والتلاوات والأذكار والأدعية والمسبحة الإلكترونية ومنصة فيديوهات ومقاطع Shorts روحانية متطورة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

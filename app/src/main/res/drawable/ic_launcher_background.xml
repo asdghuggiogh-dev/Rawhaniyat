@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="0"
+                android:startY="0"
+                android:endX="108"
+                android:endY="108"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#006C4C" />
+                <item android:offset="0.5" android:color="#044E38" />
+                <item android:offset="1.0" android:color="#01281D" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Subtle luxury Islamic geometric pattern background -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#15E2B93B"
+        android:strokeWidth="1"
+        android:pathData="M54,18 L90,54 L54,90 L18,54 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#15E2B93B"
+        android:strokeWidth="1"
+        android:pathData="M28,28 L80,28 L80,80 L28,80 Z" />
+</vector>

@@ -1,0 +1,146 @@
+{
+  "videos": [
+    {
+      "id": "vid_1",
+      "title": "تلاوة خاشعة تهز القلوب من سورة مريم - الشيخ عبد الرحمن الشامي",
+      "description": "تلاوة مباركة خاشعة من آيات سورة مريم المباركة بصوت عذب وأداء مؤثر من رحاب بيت الله الحرام.",
+      "authorName": "عبد الرحمن الشامي",
+      "authorHandle": "abdurrahman_sh",
+      "authorAvatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=800",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "viewsCount": 245000,
+      "likesCount": 18900,
+      "commentsCount": 342,
+      "timeAgo": "منذ ساعتين",
+      "durationFormatted": "15:32",
+      "hashtags": [
+        "#قرآن",
+        "#تلاوة_خاشعة",
+        "#سورة_مريم",
+        "#روحانيات"
+      ],
+      "isShort": false,
+      "createdAt": 1727900000000
+    },
+    {
+      "id": "vid_2",
+      "title": "سورة الكهف كاملة بتلاوة هادئة ومريحة للأعصاب - راحة نفسية عميقة",
+      "description": "استمع إلى سورة الكهف كاملة بصوت عذب يبعث الطمأنينة في القلب والسكينة في الروح.",
+      "authorName": "تسجيلات الحرمين الشريفين",
+      "authorHandle": "haramain_recitations",
+      "authorAvatarUrl": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=200",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "viewsCount": 520000,
+      "likesCount": 43100,
+      "commentsCount": 890,
+      "timeAgo": "أمس",
+      "durationFormatted": "42:15",
+      "hashtags": [
+        "#سورة_الكهف",
+        "#الجمعة",
+        "#قرآن_كريم"
+      ],
+      "isShort": false,
+      "createdAt": 1727800000000
+    }
+  ],
+  "shorts": [
+    {
+      "id": "short_1",
+      "title": "﴿وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ﴾ 🤍",
+      "authorName": "عبد الرحمن الشامي",
+      "authorHandle": "abdurrahman_sh",
+      "authorAvatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600",
+      "likesCount": 84200,
+      "commentsCount": 1240,
+      "viewsCount": 620000,
+      "hashtags": [
+        "#روحانيات",
+        "#قرآن",
+        "#طمأنينة",
+        "#دعاء"
+      ],
+      "soundTitle": "تلاوة سورة البقرة المباركة",
+      "soundAuthor": "الشيخ مشاري العفاسي",
+      "durationSeconds": 30,
+      "createdAt": 1727900000000
+    },
+    {
+      "id": "short_2",
+      "title": "«أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ» 🌿",
+      "authorName": "قبسات من نور",
+      "authorHandle": "qabasat_noor",
+      "authorAvatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?w=600",
+      "likesCount": 45100,
+      "commentsCount": 612,
+      "viewsCount": 380000,
+      "hashtags": [
+        "#ذكر_الله",
+        "#أذكار",
+        "#راحة_نفسية"
+      ],
+      "soundTitle": "نفحات الذكر والسكينة",
+      "soundAuthor": "قبسات",
+      "durationSeconds": 25,
+      "createdAt": 1727850000000
+    }
+  ],
+  "users": {
+    "abdurrahman_sh": {
+      "id": "current_user_1",
+      "name": "عبد الرحمن الشامي",
+      "username": "abdurrahman_sh",
+      "bio": "طالب علم ومحب للقرآن الكريم والتدبر 🌙 | ناشر للخير والمواعظ الطيبة",
+      "avatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200",
+      "followersCount": 24800,
+      "followingCount": 132,
+      "likesCount": 580000,
+      "viewsCount": 2100000,
+      "videosCount": 16
+    },
+    "qabasat_noor": {
+      "id": "creator_qabasat",
+      "name": "قبسات من نور",
+      "username": "qabasat_noor",
+      "bio": "خواطر وتأملات قرآنية ترتقي بالروح وتنير الدرب ✨",
+      "avatarUrl": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200",
+      "followersCount": 85000,
+      "followingCount": 31,
+      "likesCount": 740000,
+      "viewsCount": 3200000,
+      "videosCount": 28
+    }
+  },
+  "comments": {
+    "vid_1": [
+      {
+        "id": "c_1",
+        "contentId": "vid_1",
+        "authorName": "أحمد المنصوري",
+        "authorHandle": "ahmed_m",
+        "authorAvatarUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200",
+        "text": "ما شاء الله تبارك الله، تلاوة تقشعر لها الأبدان وتلامس القلوب جزاكم الله خيراً 🤍",
+        "timeAgo": "منذ ساعة",
+        "likesCount": 42
+      }
+    ],
+    "short_1": [
+      {
+        "id": "sc_1",
+        "contentId": "short_1",
+        "authorName": "محمد العلي",
+        "authorHandle": "mohammed_ali",
+        "authorAvatarUrl": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200",
+        "text": "ونعم بالله العلي العظيم، سبحان من قربه أمان 🌸",
+        "timeAgo": "منذ ساعتين",
+        "likesCount": 19
+      }
+    ]
+  }
+}
